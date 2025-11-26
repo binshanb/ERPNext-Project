@@ -1,7 +1,5 @@
-## Pharmacy App
+# pharmacy_app
 
-Custom ERPNext app for managing agencies, items, and manufacturer-item mappings.
+ERPNext custom app: Agency Management & Manufacturer–Item Mapping
 
-#### License
-
-MIT
+See `apps/pharmacy_app/README.md` for local usage & demo instructions.

@@ -1,0 +1,14 @@
+{
+ "doctype": "DocType",
+ "name": "Manufacturer",
+ "module": "Pharmacy App",
+ "custom": true,
+ "fields": [
+     {"fieldname": "manufacturer_name", "fieldtype": "Data", "label": "Manufacturer Name", "reqd": 1},
+     {"fieldname": "gln", "fieldtype": "Data", "label": "GLN"},
+     {"fieldname": "is_blocked", "fieldtype": "Check", "label": "Is Blocked"},
+     {"fieldname": "manufacturer_items", "fieldtype": "Table", "label": "Manufacturer Items", "options": "Manufacturer Item"}
+ ],
+ "permissions": [{"role": "System Manager", "read": 1, "write": 1, "create": 1}],
+ "in_create": 1
+}

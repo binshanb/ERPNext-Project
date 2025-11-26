@@ -1,0 +1,18 @@
+{
+ "doctype": "DocType",
+ "name": "Agency",
+ "module": "Pharmacy App",
+ "custom": true,
+ "fields": [
+     {"fieldname": "agency_name", "fieldtype": "Data", "label": "Agency Name", "reqd": 1},
+     {"fieldname": "territory", "fieldtype": "Link", "label": "Territory", "options": "Territory"},
+     {"fieldname": "primary_contact", "fieldtype": "Link", "label": "Primary Contact", "options": "Contact"},
+     {"fieldname": "is_active", "fieldtype": "Check", "label": "Is Active", "default": 1},
+     {"fieldname": "agency_items", "fieldtype": "Table", "label": "Agency Items", "options": "Agency Item"}
+ ],
+ "issingle": 0,
+ "permissions": [{"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1}],
+ "document_type": "Master",
+ "search_fields": "agency_name",
+ "in_create": 1
+}

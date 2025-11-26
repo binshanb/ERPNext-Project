@@ -1,0 +1,8 @@
+{
+ "report_name": "Agency Lead Times",
+ "doctype": "Agency",
+ "is_standard": false,
+ "report_type": "Script Report",
+ "report_builder": 0,
+ "filters": []
+}

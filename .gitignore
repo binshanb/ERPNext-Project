@@ -1,7 +1,26 @@
-.DS_Store
+# Python and Frappe patterns
+__pycache__/
 *.pyc
-*.egg-info
-*.swp
-tags
-pharmacy_app/docs/current
+env/
+venv/
+env.bak/
+.venv/
 node_modules/
+logs/
+*.log
+*.sqlite3
+.DS_Store
+*.egg-info
+*.tar.gz
+
+# Frappe bench
+sites/
+assets/
+Procfile
+config/
+patches/
+patches.txt
+pip-wheel-metadata/
+
+# macOS
+*.DS_Store

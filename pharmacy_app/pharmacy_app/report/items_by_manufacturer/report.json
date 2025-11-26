@@ -1,0 +1,8 @@
+{
+ "report_name": "Items by Manufacturer",
+ "doctype": "Manufacturer",
+ "is_standard": false,
+ "report_type": "Script Report",
+ "report_builder": 0,
+ "filters": []
+}
