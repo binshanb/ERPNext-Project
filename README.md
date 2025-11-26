@@ -1,110 +1,88 @@
-📦 Pharmacy App for ERPNext
+# Pharmacy App
 
-Agency Management & Manufacturer–Item Mapping
+A custom ERPNext app with two modules: **Agency Management** and **Manufacturer–Item Mapping**.
 
-A custom ERPNext application designed for Pharmacy operations, focusing on:
+[![ERPNext](https://img.shields.io/badge/ERPNext-14.x-blue)](https://erpnext.com)
+[![Frappe](https://img.shields.io/badge/Frappe-14.x-orange)](https://frappeframework.com)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-✅ Agency (Distributor) Management
-✅ Manufacturer → Item Mapping
-✅ Improved item sourcing workflows
-✅ Ease of tracking suppliers, manufacturers & item relationships
+---
 
-This project was developed as part of a technical interview task.
+## **Modules**
 
-🚀 Features
-1️⃣ Agency Management Module
+### 1. Agency Management
 
-Manage and track pharmacy agency/distributor details, including:
+- **DocTypes**
 
-Agency name & contact details
+  - `Agency`: `agency_name`, `territory`, `primary_contact`, `is_active`
+  - `Agency Item` (child table): `item_code`, `min_order_qty`, `lead_time_days`
 
-License & registration details
+- **Features**
 
-Linked items & manufacturers
+  - Prevent deactivating an Agency if it has linked items
+  - Button **Create Supplier** to generate a Supplier from an Agency
+  - Inactive Agencies display in red on list view
+- **Report:** Agency Lead Times (Agency, Item, Min Order Qty, Lead Time)
 
-Status (Active/Inactive)
+### 2. Manufacturer–Item Mapping
 
-2️⃣ Manufacturer–Item Mapping
+- **DocTypes**
 
-A dedicated module to define:
+  - `Manufacturer`: `manufacturer_name`, `gln`, `is_blocked`
+  - `Manufacturer Item`: `manufacturer`, `item_code`, `part_number`, `gtin`
 
-Manufacturer
+- **Features**
 
-Related Item
+  - Block adding Manufacturer Items if Manufacturer is marked blocked
+  - Ensure `(manufacturer, item_code)` pair is unique
+  - Auto-fill `part_number` if left blank
+- **REST API:** Return all manufacturer mappings for a given `item_code`
+- **Report:** Items by Manufacturer
 
-Item Code / Item Name
+---
 
-Strength / Dosage
+## **Installation**
 
-Packaging
+1. Get this app :
 
-Active/Inactive status
-
-This ensures accurate tracking of which manufacturer supplies each medicine.
-
-📁 Module Structure
-pharmacy_app/
-│
-├── pharmacy_app/
-│   ├── config/
-│   ├── modules.txt
-│   ├── pharma_app/
-│   │   ├── doctype/
-│   │   │   ├── agency_management/
-│   │   │   ├── manufacturer_mapping/
-│   │   │   └── ...
-│   ├── public/
-│   ├── templates/
-│   └── README.md
-│
-└── setup.py
-
-🛠️ Installation (Local Development)
-1. Create a Frappe/ERPNext Bench
-bench init erpnext-bench --frappe-branch version-14
-cd erpnext-bench
-bench get-app erpnext --branch version-14
-bench new-site mysite.local
-bench --site mysite.local install-app erpnext
-
-2. Get This Custom App
+```bash
 bench get-app pharmacy_app https://github.com/binshanb/ERPNext-Project.git
 
-3. Install the App on Your Site
+
+Create a new site:
+
+
+bench new-site mysite.local
+
+
+Install the app:
+
 bench --site mysite.local install-app pharmacy_app
 
-📌 Using the App
+Start the server:
 
-Once installed:
-
-Go to ERPNext Desk → Modules → Pharmacy App
-
-You will see:
-
-✔ Agency Management
-
-Create new agencies/distributors.
-
-✔ Manufacturer Mapping
-
-Define manufacturer linked to each item.
-
-🧪 Running Bench / Dev Commands
-Start development server
 bench start
+Sample Data / Fixtures
+Included in the fixtures/ folder:
 
-Clear cache (useful during development)
-bench clear-cache
-bench --site mysite.local migrate
+2 Agencies
 
+3 Items
 
-📜 License
+2 Manufacturers
 
-This project is licensed under the MIT License.
+Testing
+Run unit tests:
 
-👤 Author
+bench --site mysite.local run-tests --app pharmacy_app
 
-Binshan B S
-Full-Stack Developer (Python / ERPNext / Frappe)
-📧 binshanb77@gmail.com
+Documentation
+
+DocTypes and validation logic inside pharmacy_app/pharmacy_app/doctype/
+
+Custom reports inside pharmacy_app/pharmacy_app/report/
+
+REST API endpoints inside pharmacy_app/pharmacy_app/api.py
+
+AI Usage documented in AI_USAGE_LOG.md
 
